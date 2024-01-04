@@ -14,6 +14,7 @@ val1='New'
 val2='Exist'
 yn5='n'
 yn0='n'
+echo -e "\n"
 read -p "Did you get Token already? [y/n] : " yn0
 if [ ${yn0} == ${n} ]
 then

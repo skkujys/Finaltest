@@ -2,7 +2,8 @@
 n='n'
 y='y'
 yn1='n'
-echo "If you don't have Github ID, make it first"
+
+echo -e "\nIf you don't have Github ID, make it first"
 echo "Copy this URL ==> https://github.com/"
 echo -e "\n"
 read -p "If you done, type y. [y/n] : " yn1
