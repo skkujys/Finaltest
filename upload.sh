@@ -70,6 +70,7 @@ then
 fi
 source userinfo.txt
 remote_url="https://${userid}:${pswd}@github.com/${userid}/${Rname}.git"
+sed -i "s|remote_url=\".*\"|remote_url=\"$remote_url\"|" userinfo.txt
 git remote set-url origin $remote_url
 git push origin main
 fi
@@ -88,7 +89,6 @@ then
 		git commit -m $commitmsg
 	fi
 source userinfo.txt
-remote_url="https://${userid}:${pswd}@github.com/${userid}/${Rname}.git"
 git remote set-url origin $remote_url
 git push origin main
 fi
