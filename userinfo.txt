@@ -1,6 +1,6 @@
 userid="skkujys"
 email="tjrwndud6790@gmail.com"
-rurl="https://github.com/skkujys/test4.git"
+rurl="https://github.com/skkujys/Final.git"
 Rname="Final"
-remote_url="https://skkujys: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@github.com/skkujys/Final.git"
+remote_url="https://skkujys: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@github.com/skkujys/Final.git"
 pswd="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"
