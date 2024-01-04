@@ -29,13 +29,13 @@ source userinfo.txt
 git remote add origin $rurl
 A=$(git branch)
 echo "Branch : "$A
-read -p "Now you confirmed your local storage branch name. Is it 'master?'(If it is 'master', you have to change it to 'main') [y/n] : " yn4
-while [ ${yn4} == ${y} ]
+read -p "Now you confirmed your local storage branch name. Is it 'main?'(If it is not 'main', you have to change it to 'main') [y/n] : " yn4
+while [ ${yn4} == ${n} ]
 do
 	git branch -m master main
 	echo "Branch : "
 	git branch
-	read -p "Still 'master'? [y/n] " yn4
+	read -p "Still not 'main'? [y/n] " yn4
 done
 git pull
 
