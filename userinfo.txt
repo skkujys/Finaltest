@@ -1,4 +1,6 @@
 userid="skkujys"
 email="tjrwndud6790@gmail.com"
-rurl="https://github.com/skkujys/New.git"
+rurl="https://github.com/skkujys/test3.git"
+Rname="test3"
 remote_url="default"
+pswd="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"

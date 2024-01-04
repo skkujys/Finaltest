@@ -9,17 +9,26 @@ rurl='default'
 yn3='n'
 yn4='n'
 pswd='n'
-NE=1
-val1=1
-val2=2
-
-echo "Get Token first! copy! -> https://github.com/settings/tokens"
+NE='default'
+val1='New'
+val2='Exist'
+yn5='n'
+yn0='n'
+read -p "Did you get Token already? [y/n] : " yn0
+if [ ${yn0} == ${n} ]
+then
+echo -e "Get Token first! copy! -> https://github.com/settings/tokens\n"
+echo -e "Recommended : Check 'repo', 'workflow', 'write:packages', 'admin:org' on Select scopes\n"
 read -p "If you got token, Type your token password here : " pswd
-
-read -p "Select the mode [New : 1/Exist : 2] : " NE
-if [ ${NE} -eq ${val1} ]
+sed -i "s|pswd=\".*\"|pswd=\"$pswd\"|" userinfo.txt
+fi
+echo -e "\n"
+read -p "Select the mode [New : you made new Repository and want to upload there / Exist : want to upload exist Repository] : " NE
+echo -e "\n"
+if [ ${NE} == ${val1} ]
 then
 read -p "Repository URL is needed. Have you ever typed it here? [y/n] : " yn3
+echo -e "\n"
 if [ ${yn3} == ${n} ]
 then
 	read -p "Write your Repository URL : " rurl
@@ -30,16 +39,16 @@ git remote add origin $rurl
 A=$(git branch)
 echo "Branch : "$A
 read -p "Now you confirmed your local storage branch name. Is it 'main?'(If it is not 'main', you have to change it to 'main') [y/n] : " yn4
+echo -e "\n"
 while [ ${yn4} == ${n} ]
 do
 	git branch -m master main
-	echo "Branch : "
-	git branch
+	echo "Branch : "$(git branch)
 	read -p "Still not 'main'? [y/n] " yn4
 done
 git pull
 
-echo "Type file or folder names you want to upload"
+echo -e "Type file or folder names you want to upload\n"
 while [ ${yn1} == ${n} ]
 do
 	read -p "File or Folder name : " fname
@@ -51,28 +60,36 @@ do
 	fi
 	read -p "Done? [y/n] : " yn1
 done
-
+echo -e "\n"
 read -p "Do you want to type commit logs? [y/n] : " yn2
+echo -e "\n"
 if [ ${yn2} == ${y} ]
 then
-	read -p "Type your commit messages" commitmsg
+	read -p "Type your commit messages : " commitmsg
 	git commit -m $commitmsg
 fi
+source userinfo.txt
+remote_url="https://${userid}:${pswd}@github.com/${userid}/${Rname}.git"
+git remote set-url origin $remote_url
 git push origin main
 fi
 
 yn6='n'
 
-if [ ${NE} -eq ${val2} ]
+if [ ${NE} == ${val2} ]
 then
 	git pull origin main
 	git add .
 	read -p "Do you want to type commit logs? [y/n] : " yn6
+	echo -e "\n"
 	if [ ${yn6} == ${y} ]
 	then
-		read -p "Type your commit messages" commitmsg
+		read -p "Type your commit messages : " commitmsg
 		git commit -m $commitmsg
 	fi
+source userinfo.txt
+remote_url="https://${userid}:${pswd}@github.com/${userid}/${Rname}.git"
+git remote set-url origin
 git push origin main
 fi
 
