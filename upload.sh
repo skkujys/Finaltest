@@ -12,9 +12,9 @@ pswd='n'
 NE=1
 val1=1
 val2=2
+
 echo "Get Token first! copy! -> https://github.com/settings/tokens"
 read -p "If you got token, Type your token password here : " pswd
-sed -i "s/pswd=\".*\"/pswd=\"$pswd\"/" userinfo.txt
 
 read -p "Select the mode [New : 1/Exist : 2] : " NE
 if [ ${NE} -eq ${val1} ]

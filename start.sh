@@ -11,6 +11,7 @@ done
 userid='none'
 email='none'
 yn2='n'
+Rname='default'
 echo "If you done, let me check your informations"
 read -p "Your ID : " userid
 read -p "Your email : " email
@@ -22,6 +23,8 @@ while [ $yn2 == ${n} ]
 do
 	read -p "Done? [y/n] : " yn2
 done
+read -p "Write your Repository name here : " Rname
+sed -i "s/Rname=\".*\"/Rname=\"$Rname\"/" userinfo.txt
 yn3='y'
 read -p "Did you installed git? If not, I'll install it for you. [y/n] : " yn3 
 if [ $yn3 == ${n} ]

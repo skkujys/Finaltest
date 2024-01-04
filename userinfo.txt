@@ -1,4 +1,4 @@
 userid="skkujys"
 email="tjrwndud6790@gmail.com"
 rurl="https://github.com/skkujys/New.git"
-pswd="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"
+remote_url="default"
